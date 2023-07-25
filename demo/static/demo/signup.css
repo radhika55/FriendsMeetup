@@ -1,0 +1,55 @@
+.heading {
+  margin: 0px 90px;
+  color: #8f5849;
+  font-size: 80px;
+}
+
+.heading p {
+  padding: 0%;
+  margin: 0;
+}
+
+.sign-up-form {
+  max-width: 500px;
+  margin: 10px 80px;
+  padding: 20px;
+  /* border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); */
+}
+.sign-up-form  label{
+  margin-bottom: 0.5rem;
+  display: block;
+  font-weight: bold;
+  color: rgb(46, 45, 45);
+  font-size: large;
+}
+
+.sign-up-form  input,
+.sign-up-form  textarea {
+  display: block;
+  width: 100%;
+  font: inherit;
+  padding: 0.25 rem;
+  border-radius: 6px;
+  border: 1px solid rgb(42, 42, 42);
+  margin-bottom: 1rem;
+  padding: 14px;
+}
+
+button {
+  margin-top: 10px;
+  margin-left: 10px;
+  width: 100%;
+  padding: 15px;
+  background-color: #0a66c2;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.login-nav h2{
+  border: 2px solid #0A66C2;
+  border-radius: 30px;
+  padding: 12px 16px;
+}
