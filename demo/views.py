@@ -1,14 +1,17 @@
-from django.contrib.auth import get_user_model
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from django.views.generic import View
-from rest_framework import status
+from django.views.generic.base import TemplateView
+from rest_framework import generics, serializers, status
 from rest_framework.decorators import api_view
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .models import User
-from .serializers import SignUpSerializer
+from .serializers import LogInSerializer, UserSerializer
 
 # Create your views here.
 
@@ -43,23 +46,37 @@ class SignUpView(APIView):
     template_name = 'demo/signup.html'
 
     def get(self, request):
-        serializer = SignUpSerializer()
+        serializer = UserSerializer()
         return Response({'serializer': serializer})
 
     def post(self, request):
-        serializer = SignUpSerializer(data=request.data)
+        serializer = UserSerializer(data=request.data)
         if not serializer.is_valid():
             return Response({'serializer': serializer, 'errors': serializer.errors})
-            # import pdb
-            # pdb.set_trace()
         serializer.save()
         return redirect('starting_page')
 
 
-@api_view
-def login(APIView):
-    pass
+@api_view(['GET', 'POST'])
+def user_login(request):
+    if request.method == 'POST':
+        serializer = LogInSerializer(data=request.data)
+        if serializer.is_valid():
+            email = serializer.validated_data['email']
+            password = serializer.validated_data['password']
+            user = authenticate(email=email, password=password)
+            if user is not None:
+                login(request, user)
+                return Response({'message': 'Login successful'}, status=status.HTTP_200_OK)
+            else:
+                return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    if request.method == 'GET':
+        return render(request, 'demo/login.html')
 
 
-class Profile(APIView):
-    pass
+class Profile(generics.RetrieveUpdateAPIView):
+    permission_classes = [IsAuthenticated]
+    template_name = 'demo/profile.html'
+    serializer = UserSerializer()

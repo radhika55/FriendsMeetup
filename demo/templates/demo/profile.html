@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load rest_framework %}
+{% load static %}
+{% block title %}
+ Profile Page
+{% endblock title %}
+
+{% block cssfiles %}
+<link rel="stylesheet" href="{% static 'demo/signup.css' %}">
+{% endblock %}
+
+{% block nav %}
+<nav class="login-nav">
+  <h2><a href ="{% url 'starting_page' %}">Log out</a></h2>
+</nav>
+{% endblock nav %}
+
+{% block content %}
+
+{% endblock content %}
+
