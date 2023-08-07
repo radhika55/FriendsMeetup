@@ -6,7 +6,7 @@ Sign up page
 {% endblock title %}
 
 {% block cssfiles %}
-<link rel="stylesheet" href="{% static 'demo/signup.css' %}">
+<link rel="stylesheet" href="{% static 'demo/login.css' %}">
 {% endblock %}
 
 {% block nav %}
@@ -19,7 +19,7 @@ Sign up page
 <section class='heading'>
 <p>Welcome to your <br> friends community</p>
 </section>
-<div class="sign-up-form">
+<div class="log-in-form">
 <form action="{% url 'login' %}" method="POST" >
   {% csrf_token %}
   <div>
@@ -33,6 +33,5 @@ Sign up page
   <button type="submit">Log In</button>
 </form>
 </div>
-
 {% endblock content %}
 

@@ -6,7 +6,7 @@
 {% endblock title %}
 
 {% block cssfiles %}
-<link rel="stylesheet" href="{% static 'demo/signup.css' %}">
+<link rel="stylesheet" href="{% static 'demo/profile.css' %}">
 {% endblock %}
 
 {% block nav %}
@@ -16,6 +16,12 @@
 {% endblock nav %}
 
 {% block content %}
-
+<div class="profile-form">
+  <form action="{% url 'profile' pk %}" method="PUT" >
+    {% csrf_token %}
+    {% render_form serializer %}
+    <button type="submit">Update</button>
+  </form>
+  </div>
 {% endblock content %}
 

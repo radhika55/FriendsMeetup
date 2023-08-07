@@ -43,6 +43,12 @@ Sign up page
   {% render_form serializer %}
   <button type="submit">Sign Up</button>
 </form>
+<div class ='error'>
+  {% if errors %}
+   {% for error in errors%}{% endfor %}
+    {{errors.value}}
+  {% endif %}
+</div>
 </div>
 
 {% endblock content %}

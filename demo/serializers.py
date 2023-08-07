@@ -10,6 +10,13 @@ class UserSerializer(serializers.ModelSerializer):
         extra_kwargs = {'password': {'write_only': True}}
 
 
+class UpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['mobile_number', 'address', 'city', 'state',
+                  'zip_code', 'date_of_birth', 'gender', 'profile_pic', 'hobbies']
+
+
 class LogInSerializer(serializers.Serializer):
     email = serializers.EmailField()
     password = serializers.CharField()

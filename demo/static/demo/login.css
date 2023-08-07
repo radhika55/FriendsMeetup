@@ -9,14 +9,14 @@
   margin: 0;
 }
 
-.sign-up-form {
+.log-in-form {
   max-width: 500px;
   margin: 10px 80px;
   padding: 20px;
   /* border-radius: 8px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); */
 }
-.sign-up-form  label{
+.log-in-form  label{
   margin-bottom: 0.5rem;
   display: block;
   font-weight: bold;
@@ -24,8 +24,8 @@
   font-size: large;
 }
 
-.sign-up-form  input,
-.sign-up-form  textarea {
+.log-in-form  input,
+.log-in-form  textarea {
   display: block;
   width: 100%;
   font: inherit;
